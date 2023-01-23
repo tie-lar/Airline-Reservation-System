@@ -1,3 +1,5 @@
+import java.lang.reflect.Method;
+
 /********************************************
  Airline Reservation System
  User:
@@ -18,12 +20,23 @@
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
     //User newUser = new User();
     //newUser.setName("Michelle");
     //newUser.checkAvailFlights();
 
+        //set available flights
+        /*
         Provider prov = new Provider();
-        prov.setAvailFlights();
+        Method m = Provider.class.getDeclaredMethod("setAvailFlights");
+        m.setAccessible(true);
+        m.invoke(prov);
+
+        */
+
+
+        //check available flights
+        //User newUser = new User();
+        //newUser.checkAvailFlights();
     }
 }

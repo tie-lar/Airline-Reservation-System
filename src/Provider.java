@@ -1,4 +1,7 @@
+import java.io.BufferedWriter;
 import java.util.*;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /***********************************************************************
  NECESSARY UPDATES:
@@ -14,10 +17,11 @@ public class Provider extends User
     //List<String> availFlights = new ArrayList<>();
     String availFlights;
 
-    public
-    void setAvailFlights() {
+    void setAvailFlights() throws IOException {
 
         //availFlights = Collections.singletonList(myObj.next());
+        //FileWriter newObj = new FileWriter("AvailableFlights.txt");
+        BufferedWriter writer = new BufferedWriter(new FileWriter("AvailableFlights.txt"));
 
         int count = 0;
         Scanner myObj = new Scanner(System.in).useDelimiter("\n");
@@ -47,22 +51,22 @@ public class Provider extends User
                             "Manchester (MAN) to Ireland (DUB)                  30/08/2023             55GBP           \n" + flightOne;
 
             System.out.println(availFlights);
+            //newObj.write(availFlights);
+            writer.write(availFlights);
             count++;
 
             if (count == numOfAvailFlights)
             {
                 System.out.println("Finished inputting flight information.\n" +
                         "Returning back to main menu...");
+                writer.close();
                 break;
             }
         }
 
-
-
-
     }
 
-    void getAvailFlights()
+    protected void getAvailFlights()
     {
         System.out.println(availFlights);
     }

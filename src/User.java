@@ -1,13 +1,17 @@
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 /***********************************************************************
  NECESSARY UPDATES:
  - Make reservations and update available flights for provider relating
   to reserved flights from user
- - 
+ -
  **********************************************************************/
 
 public class User {
+
+
     protected
     String name;
     String email;
@@ -15,8 +19,10 @@ public class User {
     int phoneNumber;
 
 
-    // Mutator and Accessor methods
+
+
     public
+    // Mutator and Accessor methods
     void setName() {
         //Create a scanner object and store user inout into 'userName' the assign that to this.name
         Scanner myObj = new Scanner(System.in);
@@ -56,6 +62,8 @@ public class User {
     int getPhoneNumber() {
         return phoneNumber;
     }
+
+
 
 
     void register()
@@ -122,11 +130,42 @@ public class User {
         }
     }
 
-    void checkAvailFlights()
-    {
-        //New instance of provider so user can access flight information
-        Provider newUser = new Provider();
-        newUser.getAvailFlights();
+    void checkAvailFlights() throws FileNotFoundException {
+        File myObj = new File("AvailableFlights.txt");
+        Scanner myReader = new Scanner(myObj);
+
+        while (myReader.hasNextLine())
+        {
+            String data = myReader.nextLine();
+            System.out.println(data);
+        }
+        myReader.close();
+
+
+        /*
+         try
+        {
+            File myObj = new File("AvailableFlights.txt");
+            Scanner myReader = new Scanner(myObj);
+
+            while (myReader.hasNextLine())
+            {
+                String data = myReader.nextLine();
+                System.out.println(data);
+            }
+            myReader.close();
+            //System.out.println("There are no available flights");
+
+        } catch (FileNotFoundException e)
+        {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        */
+
+
+
     }
 
     void makeReservation()
